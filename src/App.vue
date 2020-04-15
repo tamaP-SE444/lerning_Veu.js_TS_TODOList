@@ -6,7 +6,15 @@
       <input type="radio" v-model="current" v-bind:value="label.value" />
       {{ label.label }}
     </label>
+
+    <!-- <show-label
+      v-for="label in options"
+      v-bind:key="label.label"
+      v-bind:value="lavel.value"
+    ></show-label> -->
+
     ({{ computedTodos.length }} 件を表示)
+
     <table>
       <thead v-pre>
         <tr>
@@ -41,6 +49,9 @@
       <!-- 追加ボタン -->
       <button type="submit">追加</button>
     </form>
+    <div id="components-demo">
+　    <button-counter></button-counter>
+    </div>
   </div>
 </template>
 
@@ -55,6 +66,24 @@ import HelloWorld from "./components/HelloWorld.vue";
     HelloWorld
   }
 })
+
+//test
+//Vue.component('show-label', {
+//  props: ['value'],
+//  template: '<h3>{{ value }}</h3>'
+//})
+
+Vue.component('button-counter', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+})
+
+new Vue({ el: '#components-demo' })
+
 export default class App extends Vue {
   public todos: Todo[] = []
   public options = [
