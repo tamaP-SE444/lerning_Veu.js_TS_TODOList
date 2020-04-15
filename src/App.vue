@@ -56,7 +56,7 @@ import HelloWorld from "./components/HelloWorld.vue";
   }
 })
 export default class App extends Vue {
-  public todos = [];
+  public todos: Todo[] = []
   public options = [
     { value: -1, label: "すべて" },
     { value: 0, label: "作業中" },
@@ -66,7 +66,7 @@ export default class App extends Vue {
   public get computedTodos() {
     return this.todos.filter(el => {
       return this.current < 0 ? true : this.current === el.state;
-    }, this);
+    });
   }
   public get labels() {
     return this.options.reduce(function(a, b) {

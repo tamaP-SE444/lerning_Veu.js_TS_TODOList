@@ -1,5 +1,12 @@
 import { Todo } from '@/todo'
 const STORAGE_KEY = 'todos-vuejs-demo'
+
+interface TodoStorage {
+  fetch (): Todo[];
+  save (todos: Todo[]): void;
+  uid: number;
+}
+
 export const todoStorage: TodoStorage = {
   uid: 0,
   fetch () {
@@ -13,10 +20,4 @@ export const todoStorage: TodoStorage = {
   save: function(todos) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
   }
-}
-
-interface TodoStorage {
-  fetch (): Todo[];
-  save (todos: Todo[]): void;
-  uid: number;
 }
