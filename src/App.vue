@@ -7,12 +7,6 @@
       {{ label.label }}
     </label>
 
-    <!-- <show-label
-      v-for="label in options"
-      v-bind:key="label.label"
-      v-bind:value="lavel.value"
-    ></show-label> -->
-
     ({{ computedTodos.length }} 件を表示)
 
     <table>
@@ -49,9 +43,6 @@
       <!-- 追加ボタン -->
       <button type="submit">追加</button>
     </form>
-    <div id="components-demo">
-　    <button-counter></button-counter>
-    </div>
   </div>
 </template>
 
@@ -60,29 +51,14 @@ import { Component, Vue, Watch } from "vue-property-decorator";
 import { Todo } from "@/todo";
 import { todoStorage } from "@/todo-storage";
 import HelloWorld from "./components/HelloWorld.vue";
+import ButtonCounter from "./components/ButtonCounter.vue"
 
 @Component({
   components: {
-    HelloWorld
+    HelloWorld,
+    ButtonCounter
   }
 })
-
-//test
-//Vue.component('show-label', {
-//  props: ['value'],
-//  template: '<h3>{{ value }}</h3>'
-//})
-
-Vue.component('button-counter', {
-  data: function () {
-    return {
-      count: 0
-    }
-  },
-  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-})
-
-new Vue({ el: '#components-demo' })
 
 export default class App extends Vue {
   public todos: Todo[] = []
