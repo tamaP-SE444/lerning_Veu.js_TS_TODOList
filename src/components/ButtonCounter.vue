@@ -7,9 +7,9 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class ButtonCounter extends Vue {
-  public counter = 0
+  public count = 0
   public get counterNum() {
-    return this.counter;
+    return this.count;
   }
 }
 </script>

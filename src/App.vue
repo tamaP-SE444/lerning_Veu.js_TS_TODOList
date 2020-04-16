@@ -2,10 +2,12 @@
   <div id="app">
     <h1>チュートリアルToDoリスト</h1>
 
-    <label v-for="label in options" v-bind:key="label.label">
-      <input type="radio" v-model="current" v-bind:value="label.value" />
-      {{ label.label }}
-    </label>
+    <set-label-and-radio-button
+      v-for="label in options"
+      v-bind:key="label"
+      v-bind:label="label.label"
+      v-bind:value="label.key"
+    ></set-label-and-radio-button>
 
     ({{ computedTodos.length }} 件を表示)
 
@@ -43,6 +45,7 @@
       <!-- 追加ボタン -->
       <button type="submit">追加</button>
     </form>
+    <button-counter></button-counter>
   </div>
 </template>
 
@@ -51,12 +54,14 @@ import { Component, Vue, Watch } from "vue-property-decorator";
 import { Todo } from "@/todo";
 import { todoStorage } from "@/todo-storage";
 import HelloWorld from "./components/HelloWorld.vue";
-import ButtonCounter from "./components/ButtonCounter.vue"
+import ButtonCounter from "./components/ButtonCounter.vue";
+import SetLabelAndRadioButton from "./components/SetLabelAndRadioButton.vue";
 
 @Component({
   components: {
     HelloWorld,
-    ButtonCounter
+    ButtonCounter,
+    SetLabelAndRadioButton
   }
 })
 
